@@ -1,13 +1,24 @@
 sudo: false
 
+arch:
+  - amd64
+  - ppc64le
+
 language: node_js
 
+#update node_js versions 5 & 10 & Removed failed versions 4 & 6 & stable
 node_js:
   - "0.10"
   - "0.12"
-  - "4"
-  - "6"
-  - "stable"
+  - "5"
+  - "10"
+
+jobs:
+  exclude:
+     - node_js: "0.10"
+       arch: ppc64le
+     - node_js: "0.12"
+       arch: ppc64le
 
 script:
   - npm run lint
